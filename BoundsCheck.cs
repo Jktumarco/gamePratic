@@ -62,7 +62,12 @@ public class BoundsCheck : MonoBehaviour
             isOnScreen = true;
             offRight = offLeft = offUp = offDown = false;
         }
-        
+        void OnDrawGizmos()
+        {
+            if (!Application.isPlaying) return;
+            Vector3 boundSize = new Vector3(camWidth * 2, camHeigth * 2, 0.1f);
+            Gizmos.DrawWireCube(Vector3.zero, boundSize);
+        }
     }
     
 }
